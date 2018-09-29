@@ -1,0 +1,19 @@
+---
+# test tasks file for how to delete deployed HSU tool
+
+- hosts: servers
+  remote_user: root
+  tasks:
+  - name: Remove Huawei Server Upgrade Tool
+    file:
+      state: absent
+      path: "/usr/local/huawei/HSU"
+  
+  - name: Remove Dirvers
+    shell: "! (lsmod | grep {{item}}) || rmmod {{item}}"
+    args:
+      creates: /opt/huawei/ibma/config/iBMA.ini
+    with_items:
+      - host_veth_drv
+      - host_cdev_drv
+      - host_edma_drv

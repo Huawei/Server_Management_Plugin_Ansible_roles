@@ -1,0 +1,8 @@
+---
+# test tasks file for how to get upgrade list
+
+- hosts: servers
+  remote_user: root
+  roles:
+    - role: 'Huawei.server-upgrade'
+      command: 'upgrade-list'

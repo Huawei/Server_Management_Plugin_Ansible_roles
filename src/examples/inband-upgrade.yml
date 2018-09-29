@@ -1,0 +1,16 @@
+---
+# test tasks file for how to upgrade inband
+
+- hosts: servers
+  remote_user: root
+  roles:
+    - role: 'Huawei.server-upgrade'
+      command: 'auto-upgrade'
+      # the driver list to be upgraded
+      drivers: 
+        - ['Drv-megaraid_sas', '07.703.09.00']
+        # - ['driver1', 'driver1-version']
+        # - ['driver2', 'driver2-version']
+      inbandFW:
+        - ['FW-megaraid_sas', '4.650.00.6121']
+        # - ['firmware2', 'version2']

@@ -1,0 +1,23 @@
+---
+# defaults file for huawei.ibmc
+
+# default HSU Tool root path
+hsu_root: /usr/local/huawei/HSU
+
+# default huawei tools workspace
+huawei_root: /usr/local/huawei
+
+# default base-url for repo
+hsu_repo:
+  # driver repo default configs for CentOS
+  CentOS: 
+    baseurl: https://houp.huawei.com/download/server/Linux/Driver/CentOS/$releasever/$basearch/current/
+    gpgcheck: yes
+  # driver repo default configs for RedHat
+  RedHat:
+    baseurl: https://houp.huawei.com/download/server/Linux/Driver/Redhat/Rhel$releasever/$basearch/current/
+    gpgcheck: yes
+  # firmware repo default configs
+  firmware:
+    baseurl: https://houp.huawei.com/download/server/Linux/firmware/current/
+    gpgcheck: yes

@@ -1,0 +1,12 @@
+---
+
+# test tasks file for how to upgrade BMC
+
+- hosts: servers
+  remote_user: root
+  roles:
+    - role: 'Huawei.server-upgrade'
+      command: 'auto-upgrade'
+      # the driver list to be upgraded
+      outbandFW: 
+        - ['FW-iBMC', '3.11']

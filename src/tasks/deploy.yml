@@ -1,0 +1,21 @@
+---
+# tasks file for deploy Huawei Server Upgrade tool
+
+- name: "Ensure HSU directory exists"
+  file:
+    state: directory
+    path: "{{ hsu_root }}"
+
+- name: "Ensure tar tool installed"
+  yum:
+    name: tar
+    state: present
+
+- name: "Deploy Huawei Server Upgrade Tool"
+  unarchive:
+    copy=yes
+    src="HSU.tar.gz"
+    dest="{{ huawei_root }}"
+    mode=0644
+  #  creates="{{ hsu_root }}/HSU.py"
+  changed_when: True

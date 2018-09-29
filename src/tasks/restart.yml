@@ -1,0 +1,12 @@
+---
+# tasks file for Restart OS
+
+- name: "Restart Server"
+  shell: "/bin/sh {{ hsu_root }}/bin/hsu restart --format=json"
+  register: result
+  changed_when: False
+  failed_when: False
+
+- name: "Display restart Huawei Server result"
+  debug: msg="{{ result.stdout | hsu }}"
+  failed_when: result.rc != 0

@@ -1,0 +1,15 @@
+---
+# tasks file for listing target server upgrade list
+
+# deploy houp repo to target server
+- import_tasks: add-repo.yml
+
+- name: "Gather Huawei Server upgrade list"
+  shell: "/bin/sh {{ hsu_root }}/bin/hsu verify --format=json"
+  register: result
+  changed_when: False
+  failed_when: False
+
+- name: "Display Huawei Server upgrade list"
+  debug: msg="{{ result.stdout | hsu }}"
+  failed_when: result.rc != 0

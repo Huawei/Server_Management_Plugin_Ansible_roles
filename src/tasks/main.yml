@@ -1,0 +1,8 @@
+---
+# tasks file for Huawei.server-upgrade
+
+# deploy HSU distribution to target server
+- import_tasks: deploy.yml
+
+# Dynamic include a task base on command
+- include_tasks: "{{command}}.yml"

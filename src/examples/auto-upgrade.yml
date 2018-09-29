@@ -1,0 +1,8 @@
+---
+# test tasks file for how to auto upgrade all drivers and firmwares
+  
+- hosts: servers
+  remote_user: root
+  roles:
+    - role: 'Huawei.server-upgrade'
+      command: 'auto-upgrade'  

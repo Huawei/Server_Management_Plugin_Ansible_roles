@@ -1,0 +1,19 @@
+---
+# tasks file for auto upgrade target server driver&firmware
+
+# deploy houp repo to target server
+- import_tasks: add-repo.yml
+
+- name: "Auto Upgrade Huawei Server"
+  shell: /bin/sh {{ hsu_root }}/bin/hsu upgrade
+   {{ drivers | default([]) | plain(inbandFW|default([]), outbandFW|default([])) }} 
+   --format=json
+  register: result
+  changed_when: False
+  failed_when: False
+
+- name: "Auto Upgrade Huawei Server Result"
+  debug: msg="{{ result.stdout | hsu }}"
+  notify: Remove Huawei Server Upgrade Tool
+  failed_when: result.rc != 0
+  

@@ -1,0 +1,9 @@
+---
+
+# test tasks file for how to restart server
+
+- hosts: servers
+  remote_user: root
+  gather_facts: no
+  roles:
+    - { role: 'Huawei.server-upgrade', command: 'restart' }
